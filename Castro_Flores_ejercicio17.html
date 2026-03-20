@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+/* --- Estilos para el contenedor del formulario --- */
+form {
+  border-radius: 5px;      /* Redondea las esquinas del cuadro */
+  background-color: #f2f2f2; /* Pone un fondo gris claro */
+  padding: 20px;           /* Espacio entre el borde y lo que hay dentro */
+}
+
+/* --- Estilo para los textos de arriba de cada cuadro --- */
+label {
+  display: block;          /* Hace que el texto ocupe toda su linea */
+}
+
+/* --- Estilos para los cuadros de texto y el menu de seleccion --- */
+input[type=text], select {
+  width: 100%;             /* Estira el cuadro a todo el ancho */
+  padding: 12px;           /* Le da grosor interno para que no este apretado */
+  margin: 8px 0;           /* Separa un cuadro de otro arriba y abajo */
+  display: inline-block;   /* Permite que el diseño fluya bien */
+  border: 1px solid #ccc;  /* Pone un borde gris delgado */
+  border-radius: 4px;      /* Redondea un poco las puntas del cuadro */
+  box-sizing: border-box;  /* Ajusta el tamaño para que no se salga del margen */
+}
+
+/* --- Estilos para el boton de enviar --- */
+input[type=submit] {
+  width: 100%;             /* El boton ocupa todo el ancho */
+  background-color: red;   /* Fondo de color rojo */
+  color: white;            /* Letras de color blanco */
+  padding: 14px;           /* Hace el boton mas alto y grande */
+  margin: 8px 0;           /* Lo separa de lo que tiene arriba */
+  border: none;            /* Le quita el borde feo de fabrica */
+  border-radius: 4px;      /* Redondea las esquinas del boton */
+  cursor: pointer;         /* Pone la manita cuando pasas el raton */
+}
+
+/* --- Cambio de color al pasar el raton --- */
+input[type=submit]:hover {
+  background-color: #45a049; /* Se vuelve verde al ponerle el cursor encima */
+}
+</style>
+</head>
+<body>
+
+<h2>Formulario con estilos CSS</h2>
+
+<form action="/action_page.php">
+  <label for="fname">Nombre</label>
+  <input type="text" id="fname" name="firstname" placeholder="Tu nombre..">
+
+  <label for="lname">Apellido</label>
+  <input type="text" id="lname" name="lastname" placeholder="Tu apellido..">
+
+  <label for="country">Pais</label>
+  <select id="country" name="country">
+    <option value="australia">Australia</option>
+    <option value="canada">Canada</option>
+    <option value="usa">USA</option>
+  </select>
+  
+  <input type="submit" value="Enviar">
+</form>
+
+</body>
+</html>

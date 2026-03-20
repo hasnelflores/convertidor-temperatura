@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Datos Personales</title>
+</head>
+<body>
+    <h1>Tarea: Salidas de texto en JavaScript</h1>
+    <h2>Mis Datos Personales</h2>
+
+    <p id="salida-innerhtml"></p>
+
+    <script>
+        // Tus datos personales (¡Cámbialos por los tuyos!)
+        let nombre = "Juan Pérez";
+        let edad = 20;
+        let ciudad = "Los Mochis, Sinaloa";
+        let pasatiempo = "Programar";
+
+        // 1. Salida usando window.alert()
+        // Esto crea una ventana emergente en el navegador al abrir la página.
+        window.alert("¡Bienvenido a mi tarea! Soy " + nombre);
+
+        // 2. Salida usando innerHTML
+        // Esta es la forma más común. Modifica el contenido de un elemento HTML existente (el párrafo de arriba).
+        document.getElementById("salida-innerhtml").innerHTML = "<strong>Nombre:</strong> " + nombre + "<br><strong>Ciudad:</strong> " + ciudad;
+
+        // 3. Salida usando document.write()
+        // Esto escribe directamente en el documento HTML. Se usa principalmente para pruebas.
+        document.write("<p><strong>Edad:</strong> " + edad + " años (Mostrado con document.write)</p>");
+
+        // 4. Salida usando console.log()
+        // Esto envía texto a la consola de desarrollador del navegador (se ve presionando F12).
+        console.log("Pasatiempo secreto: " + pasatiempo + " (Mostrado en la consola)");
+    </script>
+</body>
+</html>
