@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de IMC para Mujer</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .contenedor { background-color: #fce4ec; padding: 25px; border-radius: 10px; max-width: 400px; border: 1px solid #f8bbd0; }
+        h1 { color: #d81b60; font-size: 22px; text-align: center; }
+        label { font-weight: bold; color: #880e4f; }
+        input { margin-bottom: 15px; margin-top: 5px; padding: 8px; width: 90%; border: 1px solid #ccc; border-radius: 4px; }
+        button { background-color: #d81b60; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; width: 100%; font-size: 16px; font-weight: bold; }
+        button:hover { background-color: #ad1457; }
+        .resultado { margin-top: 20px; padding: 15px; background-color: #fff; border-radius: 5px; font-weight: normal; color: #333; text-align: center; }
+        .destacado { font-size: 24px; font-weight: bold; display: block; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Calculadora de IMC</h1>
+        <form id="formIMC">
+            <label for="peso">Peso (en kilogramos):</label><br>
+            <input type="number" id="peso" placeholder="Ej. 65" step="0.1" required><br>
+
+            <label for="altura">Estatura (en metros):</label><br>
+            <input type="number" id="altura" placeholder="Ej. 1.65" step="0.01" required><br>
+
+            <button type="button" onclick="calcularIMC()">Calcular mi IMC</button>
+        </form>
+
+        <div id="resultado" class="resultado">Ingresa tus datos para ver el resultado...</div>
+    </div>
+
+    <script>
+        function calcularIMC() {
+            // 1. Obtener los valores del formulario
+            let peso = parseFloat(document.getElementById("peso").value);
+            let altura = parseFloat(document.getElementById("altura").value);
+            let cajaResultado = document.getElementById("resultado");
+
+            // 2. Validar que no falten datos o se ingresen ceros
+            if (isNaN(peso) || isNaN(altura) || peso <= 0 || altura <= 0) {
+                cajaResultado.innerHTML = "<strong>Error:</strong> Por favor ingresa números válidos mayores a cero.";
+                cajaResultado.style.color = "red";
+                return;

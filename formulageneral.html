@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Fórmula General</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        .calculadora-box { background-color: #f9f9f9; padding: 25px; border-radius: 10px; border: 1px solid #ccc; max-width: 450px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="number"] { width: 90%; padding: 8px; margin-bottom: 15px; border: 1px solid #aaa; border-radius: 4px; }
+        button { background-color: #007BFF; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; width: 100%; }
+        button:hover { background-color: #0056b3; }
+        .area-resultado { margin-top: 20px; padding: 15px; background-color: #e9ecef; border-radius: 5px; font-weight: bold; color: #333; min-height: 40px; }
+    </style>
+</head>
+<body>
+    <div class="calculadora-box">
+        <h1>Calculadora de Fórmula General</h1>
+        <form id="formulario">
+            <label for="a">Valor de a (ej. 1):</label>
+            <input type="number" id="a" step="any" required>
+
+            <label for="b">Valor de b (ej. -5):</label>
+            <input type="number" id="b" step="any" required>
+
+            <label for="c">Valor de c (ej. 6):</label>
+            <input type="number" id="c" step="any" required>
+
+            <button type="button" onclick="calcular()">Calcular x1 y x2</button>
+        </form>
+
+        <div id="resultado" class="area-resultado">Resultado: Esperando valores...</div>
+    </div>
+
+    <script>
+        function calcular() {
+            // 1. Obtener y convertir los valores de las cajas de texto
+            const a = parseFloat(document.getElementById('a').value);
+            const b = parseFloat(document.getElementById('b').value);
+            const c = parseFloat(document.getElementById('c').value);
+            const areaResultado = document.getElementById('resultado');
+
+            // 2. Validaciones básicas
+            if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                areaResultado.innerHTML = "Error: Por favor ingresa números válidos.";
+                areaResultado.style.color = "red";
+                return;
+            }
+
+            if (a === 0) {
+                areaResultado.innerHTML = "Error: El coeficiente 'a' no puede ser cero.";
+                areaResultado.style.color = "red";
+                return;
+            }
+
+            // 3. Calcular el discriminante (b^2 - 4ac)
+            const discriminante = Math.pow(b, 2) - (4 * a * c);
+
+            // 4. Calcular x1 y x2 basándonos en el discriminante
+            if (discriminante < 0) {
+                // Caso 1: Discriminante negativo -> No hay soluciones reales
+                areaResultado.innerHTML = `Resultado: Sin raíces reales (Discriminante = ${discriminante.toFixed(2)})`;
+                areaResultado.style.color = "orange";
+            } else if (discriminante === 0) {
+                // Caso 2: Discriminante cero -> Una sola solución doble
+                const x = -b / (2 * a);
+                areaResultado.innerHTML = `Resultado: Una solución única (x1 = x2) = ${x.toFixed(4)}`;
+                areaResultado.style.color = "blue";
+            } else {
+                // Caso 3: Discriminante positivo -> Dos soluciones reales
+                const x1 = (-b + Math.sqrt(discriminante)) / (2 * a);
+                const x2 = (-b - Math.sqrt(discriminante)) / (2 * a);
+                areaResultado.innerHTML = `Resultado: x1 = ${x1.toFixed(4)}, x2 = ${x2.toFixed(4)}`;
+                areaResultado.style.color = "green";
+            }
+        }
+    </script>
+</body>
+</html>

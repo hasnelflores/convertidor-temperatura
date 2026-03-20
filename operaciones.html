@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones Matemáticas en JavaScript</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .resultado { margin-bottom: 10px; padding: 10px; background-color: #f4f4f4; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Tarea: Operaciones Matemáticas</h1>
+    <h2>Resultados de las operaciones:</h2>
+
+    <div id="salida-resultados"></div>
+
+    <script>
+        // 1. Declarar dos variables y asignarles valores
+        let numero1 = 10;
+        let numero2 = 2;
+
+        // 2. Realizar las operaciones matemáticas
+        let suma = numero1 + numero2;
+        let resta = numero1 - numero2;
+        let division = numero1 / numero2;
+        let exponenciacion = numero1 ** numero2; // El doble asterisco ** es para elevar a una potencia
+
+        // 3. Imprimir los resultados en la página web
+        let contenedor = document.getElementById("salida-resultados");
+
+        // Usamos innerHTML para meter texto y etiquetas HTML dentro de nuestro contenedor
+        contenedor.innerHTML = `
+            <div class="resultado"><strong>Valores iniciales:</strong> Número 1 = ${numero1}, Número 2 = ${numero2}</div>
+            <div class="resultado"><strong>Suma:</strong> ${numero1} + ${numero2} = ${suma}</div>
+            <div class="resultado"><strong>Resta:</strong> ${numero1} - ${numero2} = ${resta}</div>
+            <div class="resultado"><strong>División:</strong> ${numero1} / ${numero2} = ${division}</div>
+            <div class="resultado"><strong>Exponenciación:</strong> ${numero1} elevado a la ${numero2} = ${exponenciacion}</div>
+        `;
+    </script>
+</body>
+</html>
