@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tablas de Multiplicar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #contenedor {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .tabla {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin: 10px;
+            padding: 10px;
+            width: 150px;
+            box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+<h1>Tablas de Multiplicar</h1>
+
+<button onclick="generarTablas()">Generar tablas del 1 al 10</button>
+
+<div id="contenedor"></div>
+
+<script>
+    function generarTablas() {
+        const contenedor = document.getElementById("contenedor");
+        contenedor.innerHTML = ""; // limpiar contenido
+
+        // ciclo para tablas del 1 al 10
+        for (let i = 1; i <= 10; i++) {
+            let tablaDiv = document.createElement("div");
+            tablaDiv.classList.add("tabla");
+
+            let contenido = "<h3>Tabla del " + i + "</h3>";
+
+            // ciclo para multiplicaciones
+            for (let j = 1; j <= 10; j++) {
+                contenido += i + " x " + j + " = " + (i * j) + "<br>";
+            }
+
+            tablaDiv.innerHTML = contenido;
+            contenedor.appendChild(tablaDiv);
+        }
+    }
+</script>
+
+</body>
+</html>
