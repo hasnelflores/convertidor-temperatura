@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertidor de Temperatura</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        input[type="number"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .resultado {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Convertidor de Celsius a Fahrenheit</h2>
+        
+        <form id="conversorForm">
+            <label for="celsius">Ingresa la temperatura en Celsius:</label><br><br>
+            <input type="number" id="celsius" step="any" value="25" required>
+            <button type="submit">Convertir</button>
+        </form>
+
+        <div class="resultado" id="resultadoTexto"></div>
+    </div>
+
+    <script>
+        // Seleccionamos el formulario y escuchamos el evento de envío (submit)
+        document.getElementById('conversorForm').addEventListener('submit', function(event) {
+            // Prevenimos que la página se recargue
+            event.preventDefault();
+
+            // Obtenemos el valor del input
+            const celsiusInput = document.getElementById('celsius').value;
+            
+            // Convertimos el valor a un número
+            const celsius = parseFloat(celsiusInput);
+
+            // Aplicamos la fórmula: Fahrenheit = Celsius * 9/5 + 32
+            const fahrenheit = (celsius * 9 / 5) + 32;
+
+            // Formateamos el resultado para asegurar que muestre al menos un decimal (.0) 
+            // como en el formato esperado de tu prueba
+            let fahrenheitFormateado = fahrenheit % 1 !== 0 ? fahrenheit : fahrenheit.toFixed(1);
+
+            // Mostramos el resultado con el formato exacto solicitado
+            const textoResultado = `${celsius} Celsius = ${fahrenheitFormateado} Fahrenheit`;
+            
+            document.getElementById('resultadoTexto').innerText = textoResultado;
+        });
+    </script>
+
+</body>
+</html>
